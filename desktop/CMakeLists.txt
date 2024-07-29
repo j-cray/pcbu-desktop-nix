@@ -15,8 +15,9 @@ if(WIN32)
         set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/msvc2019_64")
     elseif(TARGET_ARCH STREQUAL "arm64")
         set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/msvc2019_arm64")
-    endif()
-elseif(APPLE)
+endif()
+
+if(APPLE)
     set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/macos")
 endif()
 
@@ -36,8 +37,9 @@ if(WIN32)
         set(PLATFORM_RES res/resources_win_arm64.qrc)
     else()
         message(FATAL_ERROR "Undefined resources for ${TARGET_ARCH} on WINDOWS.")
-    endif()
-elseif(APPLE)
+endif()
+
+if(APPLE)
     add_compile_definitions(APPLE)
     set(PLATFORM_SRC
             src/installer/PAMHelper.cpp
@@ -51,8 +53,9 @@ elseif(APPLE)
         set(PLATFORM_RES res/resources_mac_arm64.qrc)
     else()
         message(FATAL_ERROR "Undefined resources for ${TARGET_ARCH} on APPLE.")
-    endif()
-elseif(UNIX)
+endif()
+
+if(UNIX)
     add_compile_definitions(LINUX)
     set(PLATFORM_SRC
             src/installer/PAMHelper.cpp
