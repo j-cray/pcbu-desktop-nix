@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-set(CMAKE_QT_POLICY QTP0001 NEW)
 
 if(WIN32)
     set(QT_HOST_PATH "${QT_BASE_DIR}/msvc2019_64")
@@ -124,6 +123,9 @@ qt_add_executable(pcbu_desktop
         src/utils/ResourceHelper.cpp
         src/utils/ResourceHelper.h
         ${PLATFORM_SRC}
+)
+qt_policy(pcbu_desktop
+        SET QTP0001 NEW
 )
 qt_add_qml_module(pcbu_desktop
         URI PCBioUnlock
