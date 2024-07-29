@@ -10,6 +10,7 @@ if(NOT DEFINED QT_BASE_DIR)
     set(QT_BASE_DIR "kdePackages.qtbase")
 endif()
 
+
 if(WIN32)
     set(QT_HOST_PATH "${QT_BASE_DIR}/msvc2019_64")
     if(TARGET_ARCH STREQUAL "x64")
@@ -20,6 +21,7 @@ if(WIN32)
 elseif(APPLE)
     set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/macos")
 endif()
+
 
 find_package(Qt6 COMPONENTS Core Gui Quick QuickControls2 REQUIRED)
 
@@ -68,6 +70,7 @@ elseif(UNIX)
     else()
     message(FATAL_ERROR "Unsupported OS.")
 endif()
+
 
 include_directories(src src/ui src/ui/helpers src/ui/models ../deps/headers)
 
