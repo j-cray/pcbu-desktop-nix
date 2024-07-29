@@ -125,7 +125,7 @@ qt_add_executable(pcbu_desktop
         ${PLATFORM_SRC}
 )
 qt_policy(pcbu_desktop
-        SET QTP0001 NEW
+       QTP0001 NEW
 )
 qt_add_qml_module(pcbu_desktop
         URI PCBioUnlock
