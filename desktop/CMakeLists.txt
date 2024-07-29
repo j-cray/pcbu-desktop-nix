@@ -124,7 +124,7 @@ qt_add_executable(pcbu_desktop
         src/utils/ResourceHelper.h
         ${PLATFORM_SRC}
 )
-qt_policy(QTP0001 NEW)
+qt6_policy(QTP0001 NEW)
 qt_add_qml_module(pcbu_desktop
         URI PCBioUnlock
         VERSION 1.0
