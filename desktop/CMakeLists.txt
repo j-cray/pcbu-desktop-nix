@@ -26,11 +26,10 @@ find_package(Qt6 COMPONENTS Core Gui Quick QuickControls2 REQUIRED)
 if(WIN32)
     add_compile_definitions(WINDOWS)
     set(PLATFORM_SRC
-            src/installer/WinFirewallHelper.cpp
-            src/installer/WinFirewallHelper.h
-            src/installer/ServiceInstaller.Win.cpp
-            src/winres.rc)
-
+        src/installer/WinFirewallHelper.cpp
+        src/installer/WinFirewallHelper.h
+        src/installer/ServiceInstaller.Win.cpp
+        src/winres.rc)
     if(TARGET_ARCH STREQUAL "x64")
         set(PLATFORM_RES res/resources_win_x64.qrc)
     elseif(TARGET_ARCH STREQUAL "arm64")
@@ -44,12 +43,10 @@ elseif(APPLE)
             src/installer/PAMHelper.cpp
             src/installer/PAMHelper.h
             src/installer/ServiceInstaller.Mac.cpp
-            res/icons/icons.icns
-    )
+            res/icons/icons.icns)
     set(MACOSX_BUNDLE_ICON_FILE icons.icns)
     set_source_files_properties(res/icons/icons.icns PROPERTIES
             MACOSX_PACKAGE_LOCATION "Resources")
-
     if(TARGET_ARCH STREQUAL "arm64")
         set(PLATFORM_RES res/resources_mac_arm64.qrc)
     else()
@@ -60,9 +57,7 @@ elseif(UNIX)
     set(PLATFORM_SRC
             src/installer/PAMHelper.cpp
             src/installer/PAMHelper.h
-            src/installer/ServiceInstaller.Linux.cpp
-    )
-
+            src/installer/ServiceInstaller.Linux.cpp)
     if(TARGET_ARCH STREQUAL "x64")
         set(PLATFORM_RES res/resources_linux_x64.qrc)
     elseif(TARGET_ARCH STREQUAL "arm64")
@@ -70,9 +65,12 @@ elseif(UNIX)
     else()
         message(FATAL_ERROR "Undefined resources for ${TARGET_ARCH} on LINUX.")
     endif()
+    else()
+    message(FATAL_ERROR "Unsupported OS.")
 endif()
 
 include_directories(src src/ui src/ui/helpers src/ui/models ../deps/headers)
+
 set(QML_FILES
         qml/MainWindow.qml
         qml/AboutWindow.qml
@@ -87,8 +85,8 @@ set(QML_FILES
         qml/pairing/PairingMethodForm.qml
         qml/pairing/PairingBTSelectForm.qml
         qml/pairing/PairingBTPairForm.qml
-        qml/pairing/PairingQRForm.qml
-)
+        qml/pairing/PairingQRForm.qml)
+
 set(UI_SRC_FILES
         src/ui/MainWindow.h
         src/ui/MainWindow.cpp
@@ -107,8 +105,8 @@ set(UI_SRC_FILES
         src/ui/models/NetworkListModel.cpp
         src/ui/models/NetworkListModel.h
         src/ui/helpers/I18nWrapper.cpp
-        src/ui/helpers/I18nWrapper.h
-)
+        src/ui/helpers/I18nWrapper.h)
+
 qt_add_executable(pcbu_desktop
         ../deps/headers/qrcodegen.cpp
         qml/resources.qrc
@@ -122,30 +120,28 @@ qt_add_executable(pcbu_desktop
         src/utils/QRUtils.h
         src/utils/ResourceHelper.cpp
         src/utils/ResourceHelper.h
-        ${PLATFORM_SRC}
-)
+        ${PLATFORM_SRC})
+
 qt_add_qml_module(pcbu_desktop
         URI PCBioUnlock
         VERSION 1.0
         QML_FILES
         ${QML_FILES}
         SOURCES
-        ${UI_SRC_FILES}
-)
+        ${UI_SRC_FILES})
+
 target_link_libraries(pcbu_desktop PRIVATE
         Qt::Core
         Qt::Gui
         Qt::Quick
         Qt::QuickControls2
-        pcbu_common
-)
+        pcbu_common)
 
 set_target_properties(pcbu_desktop PROPERTIES
-        WIN32_EXECUTABLE TRUE
-        MACOSX_BUNDLE TRUE
-)
+    WIN32_EXECUTABLE TRUE
+    MACOSX_BUNDLE TRUE)
+
 install(TARGETS pcbu_desktop
         BUNDLE  DESTINATION .
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
