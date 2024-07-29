@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-set(QT_BASE_DIR kdePackages.qtbase)
-set(ARCH x64)
+
+if(NOT DEFINED QT_BASE_DIR)
+    set(QT_BASE_DIR "kdePackages.qtbase")
+endif()
 
 
 if(WIN32)
@@ -15,9 +17,8 @@ if(WIN32)
         set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/msvc2019_64")
     elseif(TARGET_ARCH STREQUAL "arm64")
         set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/msvc2019_arm64")
-endif()
-
-if(APPLE)
+    endif()
+elseif(APPLE)
     set(CMAKE_PREFIX_PATH "${QT_BASE_DIR}/macos")
 endif()
 
@@ -37,9 +38,8 @@ if(WIN32)
         set(PLATFORM_RES res/resources_win_arm64.qrc)
     else()
         message(FATAL_ERROR "Undefined resources for ${TARGET_ARCH} on WINDOWS.")
-endif()
-
-if(APPLE)
+    endif()
+elseif(APPLE)
     add_compile_definitions(APPLE)
     set(PLATFORM_SRC
             src/installer/PAMHelper.cpp
@@ -53,9 +53,8 @@ if(APPLE)
         set(PLATFORM_RES res/resources_mac_arm64.qrc)
     else()
         message(FATAL_ERROR "Undefined resources for ${TARGET_ARCH} on APPLE.")
-endif()
-
-if(UNIX)
+    endif()
+elseif(UNIX)
     add_compile_definitions(LINUX)
     set(PLATFORM_SRC
             src/installer/PAMHelper.cpp
