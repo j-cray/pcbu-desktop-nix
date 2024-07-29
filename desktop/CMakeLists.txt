@@ -5,10 +5,8 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-
-if(NOT DEFINED QT_BASE_DIR)
-    set(QT_BASE_DIR "kdePackages.qtbase")
-endif()
+set(QT_BASE_DIR kdePackages.qtbase)
+set(ARCH x64)
 
 
 if(WIN32)
