@@ -7,7 +7,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 if(NOT DEFINED QT_BASE_DIR)
-    set(QT_BASE_DIR "${pkgs.kdePackages.qtbase})
+    set(QT_BASE_DIR "${pkgs.kdePackages.qtbase}")
 endif()
 if(WIN32)
     set(QT_HOST_PATH "${QT_BASE_DIR}/msvc2019_64")
