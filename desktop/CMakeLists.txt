@@ -80,11 +80,9 @@ set(QML_FILES
         qml/base/Form.qml
         qml/base/StepForm.qml
         qml/base/StepButtons.qml
-
         qml/forms/MainForm.qml
         qml/forms/SettingsForm.qml
         qml/forms/LoadingForm.qml
-
         qml/pairing/PairingPasswordForm.qml
         qml/pairing/PairingMethodForm.qml
         qml/pairing/PairingBTSelectForm.qml
@@ -102,7 +100,6 @@ set(UI_SRC_FILES
         src/ui/LogsWindow.h
         src/ui/UpdaterWindow.cpp
         src/ui/UpdaterWindow.h
-
         src/ui/models/DevicesTableModel.cpp
         src/ui/models/DevicesTableModel.h
         src/ui/models/UserListModel.cpp
@@ -117,7 +114,6 @@ qt_add_executable(pcbu_desktop
         qml/resources.qrc
         res/resources.qrc
         ${PLATFORM_RES}
-
         src/main.cpp
         src/installer/ServiceInstaller.h
         src/utils/I18n.cpp
