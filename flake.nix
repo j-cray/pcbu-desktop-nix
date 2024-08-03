@@ -73,7 +73,7 @@
           '';
 
           # Metadata 
-          meta = with lib; {
+          meta = with pkgs.lib; {
             description = "The desktop app for PC Bio Unlock. Unlock your PC with your Android phone.";
             license = licenses.gpl3Plus;
             maintainer = "jcray <jakewray@mailbox.org>";
