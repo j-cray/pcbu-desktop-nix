@@ -30,7 +30,7 @@
           ];
         };
 
-        packages.default = stdenv.mkDerivation {
+        packages.default = pkgs.stdenv.mkDerivation {
           pname = "pcbuDesktop";
           version = "2.0.3";
           src = self;
