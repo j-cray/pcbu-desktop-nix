@@ -1,5 +1,3 @@
-
-nix
 {
   description = "A flake for PC Bio Unlock. Unlock your PC with your Android phone.";
 
