@@ -38,6 +38,7 @@
             repo = "pcbu-desktop-nix";
             rev = "83cc72c";
             fetchSubmodules = true;
+            sha256 = "sha256-pMY5RBhp2kvosTSmbw8vxLnXNJpEBuWQmCgAkRxByq0=";
           };
 
           buildInputs = with pkgs; [
