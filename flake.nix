@@ -33,8 +33,9 @@
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "pcbuDesktop";
           version = "2.0.3";
-          src = self;
-
+          src = self {
+            fetchSubmodules = true;
+          };
           buildInputs = with pkgs; [
             cmake
             openssl
