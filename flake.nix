@@ -12,7 +12,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShell = pkgs.mkShell {
+        devShells = pkgs.mkShell {
           buildInputs = with pkgs; [
             cmake
             openssl
