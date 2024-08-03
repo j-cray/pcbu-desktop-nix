@@ -33,9 +33,13 @@
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "pcbuDesktop";
           version = "2.0.3";
-          src = self {
+          src = pkgs.fetchFromGitHub {
+            owner = "j-cray";
+            repo = "pcbu-desktop-nix";
+            rev = "83cc72c";
             fetchSubmodules = true;
           };
+
           buildInputs = with pkgs; [
             cmake
             openssl
