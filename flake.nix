@@ -12,7 +12,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShells.default = pkgs.mkShell {
+        devShells.${system} = pkgs.mkShell {
           buildInputs = with pkgs; [
             cmake
             openssl
@@ -30,7 +30,7 @@
           ];
         };
 
-        packages.${system}.default = {
+        packages.${system} = {
           pname = "pcbuDesktop";
           version = "2.0.3";
           src = self;
