@@ -30,7 +30,7 @@
           ];
         };
 
-        packages = {
+        packages.default = {
           pname = "pcbuDesktop";
           version = "2.0.3";
           src = self;
